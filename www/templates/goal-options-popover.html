@@ -1,0 +1,15 @@
+<ion-popover-view style="height:162px;">
+    <ion-content>
+        <ion-list ng-click="options.hide()">
+            <ion-item class="item" ng-click="taskCreate.open()">
+                Add task
+            </ion-item>
+            <ion-item class="item" ng-click="goalEdit.open(goal)">
+                Edit goal
+            </ion-item>
+            <ion-item class="item" ng-click="removeGoal()">
+                Remove goal
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-popover-view>

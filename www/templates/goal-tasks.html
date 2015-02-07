@@ -1,0 +1,20 @@
+<ion-view view-title="{{goal.name}}">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear button-light ion-more" ng-click="options.show($event)"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="">
+        <ul>
+            <li class="item item-checkbox" ng-repeat="task in tasks | filter:{'goalId':  goal.id}" href="#/tab/task/{{task.id}}">
+                <label class="checkbox checkbox-balanced">
+                    <input type="checkbox">
+                </label>
+                {{task.name}}
+            </li>
+        </ul>
+        <div class="after-list-controls">
+            <i class="button button-icon icon ion-plus-circled button-clear button-light" ng-click="taskCreate.open()"></i>
+        </div>
+    </ion-content>
+</ion-view>

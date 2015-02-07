@@ -1,0 +1,19 @@
+<ion-view view-title="Goals">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear button-light ion-more" ng-click="options.show($event)"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="center">
+        <ion-list sortable draggable=".goal-item" sorted="onReorder($fromIndex, $toIndex)">
+            <ion-item on-hold="data.reorder = true" class="item-icon-right goal-item" ng-repeat="goal in goals" href="#/tab/goals/{{goal.id}}/tasks">
+                <h2>{{goal.name}}</h2>
+                <p>{{goal.motivation}} progress: {{goal.progress}}</p>
+                <div line-progress="{{goal.progress}}" class="line-progress"></div>
+            </ion-item>
+        </ion-list>
+        <div class="after-list-controls">
+            <i class="button button-icon icon ion-plus-circled button-clear button-light" ng-click="goalCreate.open()"></i>
+        </div>
+    </ion-content>
+</ion-view>
