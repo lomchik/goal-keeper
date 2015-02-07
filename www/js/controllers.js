@@ -9,9 +9,6 @@ angular.module('starter.controllers', [])
 		$scope.$on('$destroy', function () {
 			$scope.options.remove();
 		});
-		$interval(function () {
-			$scope.goals[0].progress = Math.random() * 100;
-		}, 1000);
 		$scope.goals = Goals.list();
 		$scope.onReorder = function (fromIndex, toIndex) {
 			Goals.reorder(fromIndex, toIndex)
