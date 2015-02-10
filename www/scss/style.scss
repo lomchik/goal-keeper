@@ -3,6 +3,12 @@
     display: block;
 }
 
+.left {
+    float:left;
+}
+.right {
+    float:right;
+}
 .after-list-controls {
     text-align: center;
     padding: 16px;
@@ -13,7 +19,7 @@
     position: absolute;
     left:0;
     bottom: 0;
-    height:3px;
+    height:1px;
     background:$balanced;
 }
 .dragging {
@@ -28,32 +34,21 @@
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
-.placeholder {
-    -moz-transition: all 200ms ease-in-out;
-    -o-transition: all 200ms ease-in-out;
-    -webkit-transition: all 200ms ease-in-out;
-    transition: all 200ms ease-in-out;
-}
-
-/** Styling for the username field **/
-label.item.has-error {
-}
-
-/** Styling for the password field when an error exists**/
-label.item.has-error-lr {
-    border-left: 2px solid red;
-    border-right: 2px solid red;
-}
-
-/** Styling for the password field when an error has been resolved**/
-label.item.valid-lr {
-    border-left: 2px solid green;
-    border-right: 2px solid green;
-}
-
-/** Styling for the error text and container **/
 .form-error {
-    float: right;
     font-size: 12px;
-    margin: -12px 0 -13px;
+    position: absolute;
+    bottom: 0px;
+    right: 1px;
+}
+
+.goals-list {
+    .tiny {
+        font-size:10px;
+    }
+    .bottom-date {
+        padding-bottom:2px;
+    }
+    .item-content {
+        padding-right: 16px;
+    }
 }

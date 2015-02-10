@@ -6,7 +6,7 @@
 
     <ion-content class="">
         <ul>
-            <li class="item item-checkbox" ng-repeat="task in tasks | filter:{'goalId':  goal.id}" href="#/tab/task/{{task.id}}">
+            <li class="item item-checkbox" ng-repeat="task in tasks | filter:{'goalId':  goal.id}" href="#/tab/task/{{task.id}}" ng-click="taskEdit.open(goal, task)">
                 <label class="checkbox checkbox-balanced">
                     <input type="checkbox">
                 </label>
@@ -14,7 +14,7 @@
             </li>
         </ul>
         <div class="after-list-controls">
-            <i class="button button-icon icon ion-plus-circled button-clear button-light" ng-click="taskCreate.open()"></i>
+            <i class="button button-icon icon ion-plus-circled button-clear button-light" ng-click="taskEdit.open(goal)"></i>
         </div>
     </ion-content>
 </ion-view>

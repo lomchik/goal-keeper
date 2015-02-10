@@ -24,7 +24,7 @@
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Due date</span>
-                    <input name="dueDate" type="date"  ng-model="goal.dueDate">
+                    <input name="dueDate" type="date" min="{{minDate | date:'yyyy-MM-dd'}}"  ng-model="goal.dueDate">
                 </label>
             </div>
 

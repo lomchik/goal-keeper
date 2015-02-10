@@ -4,11 +4,13 @@
         <button class="button button-icon button-clear button-light ion-more" ng-click="options.show($event)"></button>
     </ion-nav-buttons>
 
-    <ion-content class="center">
+    <ion-content class="center goals-list">
         <ion-list sortable draggable=".goal-item" sorted="onReorder($fromIndex, $toIndex)">
-            <ion-item on-hold="data.reorder = true" class="item-icon-right goal-item" ng-repeat="goal in goals" href="#/tab/goals/{{goal.id}}/tasks">
+            <ion-item on-hold="data.reorder = true" class="item-text-wrap goal-item" ng-repeat="goal in goals" href="#/tab/goals/{{goal.id}}/tasks">
                 <h2>{{goal.name}}</h2>
-                <p>{{goal.motivation}} progress: {{goal.progress}}</p>
+                <p>{{goal.motivation}}</p>
+                <p class="left tiny bottom-date">{{goal.createDate | date:'d, MMM'}}</p>
+                <p class="right tiny bottom-date">{{goal.dueDate | date:'d, MMM'}}</p>
                 <div line-progress="{{goal.progress}}" class="line-progress"></div>
             </ion-item>
         </ion-list>

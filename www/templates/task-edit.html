@@ -1,0 +1,36 @@
+<div class="modal">
+    <ion-header-bar>
+        <h1 class="title">{{task.name ? 'Edit Task' : 'Create Task'}}</h1>
+    </ion-header-bar>
+    <ion-content>
+        <form name="form" novalidate="" ng-submit="form.$valid && submit(form)">
+            <div class="list">
+                <label class="item item-input item-stacked-label"
+                       ng-class="{ 'has-error' : form.name.$invalid && form.$submitted}">
+                    <span class="input-label">Name</span>
+                    <input type="text" name="name" ng-model="task.name" required placeholder="Buy book AngularJS by Brad Green">
+                    <div class="form-errors assertive" ng-messages="form.name.$error"
+                         ng-if="form.name.$invalid && form.$submitted"
+                         ng-messages-include="templates/form-errors.html"></div>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Due date</span>
+                    <input name="dueDate" type="date" min="{{minDate | date:'yyyy-MM-dd'}}" max="{{goal.dueDate | date:'yyyy-MM-dd'}}" ng-model="task.dueDate">
+                    <div class="form-errors assertive" ng-messages="form.dueDate.$error">
+                        <div class="form-error" ng-message="min">Can't be in past.</div>
+                        <div class="form-error" ng-message="max">After goal due date.</div>
+                    </div>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Repeat</span>
+                    <input type="number" min="1" name="repeat" ng-model="task.repeat" placeholder="once">
+                    <div class="form-errors assertive" ng-messages="form.repeat.$error">
+                        <div class="form-error" ng-message="min">Can't be negative.</div>
+                    </div>
+                </label>
+            </div>
+
+            <button class="button button-full button-positive" type="submit">Done</button>
+        </form>
+    </ion-content>
+</div>

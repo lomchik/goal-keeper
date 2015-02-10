@@ -14,8 +14,9 @@ angular.module('starter.controllers', [])
 			Goals.reorder(fromIndex, toIndex)
 		};
 	})
-	.controller('GoalTasksCtrl', function ($scope, $stateParams, Goals, Tasks, $ionicPopover, $location, $ionicPopup, GoalEdit) {
+	.controller('GoalTasksCtrl', function ($scope, $stateParams, Goals, Tasks, $ionicPopover, $location, GoalEdit, TaskEdit) {
 		$scope.goalEdit = GoalEdit;
+		$scope.taskEdit = TaskEdit;
 		$scope.goal = Goals.get($stateParams.goalId);
 		$scope.tasks = Tasks.list();
 		$ionicPopover.fromTemplateUrl('templates/goal-options-popover.html', {
@@ -37,7 +38,4 @@ angular.module('starter.controllers', [])
 				}
 			});
 		};
-	})
-	;
-
-;
+	});
