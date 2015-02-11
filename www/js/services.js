@@ -10,10 +10,11 @@ angular.module('starter.services', [])
 		};
 	})
 	.factory('CRUD', function(filterFilter) {
-		var CRUD = function(name, storage) {
+		var CRUD = function(name, storage, dateFields) {
 				this.name = name;
 				this.storage = storage;
 				this.items = [];
+				this.dateFields = dateFields || ['dueDate', 'createDate'];
 			};
 
 		CRUD.prototype = {
@@ -27,7 +28,7 @@ angular.module('starter.services', [])
 				item.id = this.nextId++;
 				item.createDate = new Date();
 				this.items.push(item);
-				this.save()
+				this.save();
 
 				return item;
 			},
@@ -52,6 +53,7 @@ angular.module('starter.services', [])
 			},
 			load: function() {
 				this.items = this.storage.load(this.name) || this.items;
+				this._dateFieldsToObj(this.items);
 				this._updateNextId();
 			},
 			setData: function(data) {
@@ -60,13 +62,23 @@ angular.module('starter.services', [])
 			},
 			_updateNextId: function() {
 				var maxId = -1;
-				angular.forEach(this.items, function(val) {
-					if (val > maxId) {
-						maxId = val;
+				angular.forEach(this.items, function(item) {
+					if (item.id > maxId) {
+						maxId = item.id;
 					}
 				});
 
 				return (this.nextId = ++maxId);
+			},
+			_dateFieldsToObj: function(item) {
+				angular.forEach(item, function(value, key) {
+					if (this.dateFields.indexOf(key) >= 0) {
+						item[key] = new Date(value);
+					}
+					if (angular.isObject(value) || angular.isArray(value)) {
+						this._dateFieldsToObj(value)
+					}
+				}.bind(this));
 			}
 		};
 		return CRUD;
@@ -77,21 +89,21 @@ angular.module('starter.services', [])
 				name: 'Upper intermediate in english',
 				motivation: 'get good job',
 				dueDate: new Date('2015-12-01'),
-				createDate: new Date(),
+				createDate: new Date('2015-01-01'),
 				progress: 10
 			}, {
 				id: 1,
 				name: 'Learn angular',
 				motivation: 'earn more money',
 				dueDate: new Date('2015-06-30'),
-				createDate: new Date(),
+				createDate: new Date('2015-01-01'),
 				progress: 45
 			}, {
 				id:2,
 				name: 'Навчитись вистрибувати на паралельний тротуар',
 				motivation: 'Щоб швидше рухатись по пробкам. І ще чомусьБ напевно бо це круто. А так в основному економія часу ',
-				dueDate: new Date('2016-01-07'),
-				createDate: new Date(),
+				dueDate: '2016-01-07',
+				createDate: '2015-01-01',
 				progress: 75
 			}];
 
@@ -107,18 +119,21 @@ angular.module('starter.services', [])
 				goalId: 0,
 				name: 'Go to speaking club',
 				dueDate: new Date('2015-02-07'),
+				createDate: new Date('2015-01-01'),
 				status: 'waiting'
 			}, {
 				id: 1,
 				goalId: 0,
 				name: 'Read book in english',
 				dueDate: new Date('2015-02-05'),
+				createDate: new Date('2015-01-01'),
 				status: 'waiting'
 			}, {
 				id: 2,
 				goalId: 1,
 				name: 'Write application using angular',
 				dueDate: new Date('2015-02-09'),
+				createDate: new Date('2015-01-01'),
 				status: 'waiting'
 			}];
 
