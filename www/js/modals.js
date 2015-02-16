@@ -24,7 +24,7 @@ angular.module('starter.modals', [])
 			}
 		}
 	})
-	.factory('TaskEdit', function( $ionicModal, $rootScope, Tasks) {
+	.factory('TaskEdit', function( $ionicModal, $rootScope, Tasks, $ionicPopup) {
 		var $scope = $rootScope.$new(true)
 		$ionicModal.fromTemplateUrl('templates/task-edit.html', {
 			scope: $scope,
@@ -40,10 +40,21 @@ angular.module('starter.modals', [])
 			$scope.modal.hide();
 			form && (form.$submitted = false);
 		};
+		$scope.delete = function () {
+			$ionicPopup.confirm({
+				title: 'Confirm task delete',
+				template: 'Do you give up with this task?'
+			}).then(function(res) {
+				if(res) {
+					Tasks.remove($scope.task);
+					$scope.modal.hide();
+				}
+			});
+		};
 
 		return {
 			open: function(goal, task) {
-				$scope.task = task ? angular.copy(task) : {goalId: goal.id};
+				$scope.task = task ? angular.copy(task) : {goalId: goal.id, done: 0};
 				$scope.goal = goal;
 				$scope.minDate = new Date();
 				$scope.modal.show();

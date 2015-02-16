@@ -9,6 +9,20 @@
 .right {
     float:right;
 }
+.clear {
+    clear: both;
+}
+
+.table {
+    display: table;
+}
+
+.table-cell {
+    display: table-cell;
+}
+.middle {
+    vertical-align: middle;
+}
 .after-list-controls {
     text-align: center;
     padding: 16px;
@@ -41,7 +55,7 @@
     right: 1px;
 }
 
-.goals-list {
+.item {
     .tiny {
         font-size:10px;
     }
@@ -52,3 +66,19 @@
         padding-right: 16px;
     }
 }
+.tasks {
+    .item {
+        .round-progress {
+            @extend .left;
+            margin-right: 11px;
+        }
+    }
+    .text-progress {
+        margin-top: -22px;
+        font-size: 12px;
+    }
+    button {
+        margin-right: 11px;
+    }
+}
+

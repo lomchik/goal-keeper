@@ -37,7 +37,8 @@ angular.module('starter.services', [])
 				this.save();
 			},
 			remove: function(item) {
-				var index = this.items.indexOf(item);
+				var item = this.get(item.id),
+					index = this.items.indexOf(item);
 				if (index > -1) {
 					this.items.splice(index, 1);
 					this.save();
@@ -72,7 +73,7 @@ angular.module('starter.services', [])
 			},
 			_dateFieldsToObj: function(item) {
 				angular.forEach(item, function(value, key) {
-					if (this.dateFields.indexOf(key) >= 0) {
+					if (this.dateFields.indexOf(key) >= 0 && value) {
 						item[key] = new Date(value);
 					}
 					if (angular.isObject(value) || angular.isArray(value)) {

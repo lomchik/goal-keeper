@@ -7019,11 +7019,23 @@ a.button {
   margin: 0 auto;
   display: block; }
 
-.left {
+.left, .tasks .item .round-progress {
   float: left; }
 
 .right {
   float: right; }
+
+.clear {
+  clear: both; }
+
+.table {
+  display: table; }
+
+.table-cell {
+  display: table-cell; }
+
+.middle {
+  vertical-align: middle; }
 
 .after-list-controls {
   text-align: center;
@@ -7053,9 +7065,17 @@ a.button {
   bottom: 0px;
   right: 1px; }
 
-.goals-list .tiny {
+.item .tiny {
   font-size: 10px; }
-.goals-list .bottom-date {
+.item .bottom-date {
   padding-bottom: 2px; }
-.goals-list .item-content {
+.item .item-content {
   padding-right: 16px; }
+
+.tasks .item .round-progress {
+  margin-right: 11px; }
+.tasks .text-progress {
+  margin-top: -22px;
+  font-size: 12px; }
+.tasks button {
+  margin-right: 11px; }
